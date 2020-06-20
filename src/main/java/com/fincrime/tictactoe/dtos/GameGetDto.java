@@ -10,4 +10,5 @@ public class GameGetDto {
     private UUID id;
     private String name;
     private String status;
+    private String lastPlayer;
 }

@@ -1,8 +1,7 @@
 package com.fincrime.tictactoe.entities;
 
 import com.fincrime.tictactoe.enums.Player;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,7 +9,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "move")
-@Data
+@Getter
+@Setter
+@ToString(exclude = "game")
 @RequiredArgsConstructor
 public class Move {
 

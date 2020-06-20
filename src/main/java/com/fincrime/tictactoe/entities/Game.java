@@ -1,8 +1,9 @@
 package com.fincrime.tictactoe.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fincrime.tictactoe.enums.Player;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import com.fincrime.tictactoe.enums.Status;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,7 +12,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "game")
-@Data
+@Getter
+@Setter
 @RequiredArgsConstructor
 public class Game {
     @Id
@@ -27,9 +29,11 @@ public class Game {
     private String name;
 
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.READY;
 
-    @Column(name="last_player", nullable = true)
+    @Column(name = "last_player", nullable = true)
+    @Enumerated(EnumType.STRING)
     private Player lastPlayer;
 
     @OneToMany(mappedBy = "game")

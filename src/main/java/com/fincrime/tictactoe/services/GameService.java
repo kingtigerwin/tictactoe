@@ -2,23 +2,23 @@ package com.fincrime.tictactoe.services;
 
 import com.fincrime.tictactoe.dtos.GameGetDto;
 import com.fincrime.tictactoe.dtos.GamePostDto;
-import com.fincrime.tictactoe.dtos.MoveGetDto;
 import com.fincrime.tictactoe.dtos.MovePostDto;
 import com.fincrime.tictactoe.entities.Game;
 import com.fincrime.tictactoe.entities.Move;
+import com.fincrime.tictactoe.enums.Status;
 import com.fincrime.tictactoe.exceptions.GameNotFoundException;
+import com.fincrime.tictactoe.exceptions.BadRequestException;
 import com.fincrime.tictactoe.mappers.GameMapper;
 import com.fincrime.tictactoe.mappers.MoveMapper;
 import com.fincrime.tictactoe.repositories.GameRepository;
 import com.fincrime.tictactoe.repositories.MoveRespository;
 import com.fincrime.tictactoe.utils.GameUtils;
-import jakarta.ws.rs.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -56,24 +56,29 @@ public class GameService {
         return gameMapper.fromEntity(findGameEntity(id));
     }
 
-    public MoveGetDto performMove(MovePostDto movePostDto) {
-        if (gameUtils.isMovePayloadValid(movePostDto)) {
+    @Transactional
+    public GameGetDto performMove(UUID gameId, MovePostDto movePostDto) {
+        if (!gameUtils.isMovePayloadValid(movePostDto)) {
             log.error("Invalid move payload while perform a new move, axis should be less than 3");
             throw new BadRequestException("Invalid move payload, axis should be within 3");
         }
 
-        Game game = findGameEntity(movePostDto.getGameId());
-        if (gameUtils.isPlayerValid(movePostDto, game)) {
+        Game game = findGameEntity(gameId);
+        if (!gameUtils.isPlayerValid(movePostDto, game)) {
             log.error("It should be opponent's turn to play");
             throw new BadRequestException("opponent's turn to play");
         }
-
-
-        Set<Move> moveList = game.getMoves();
+        game.setLastPlayer(movePostDto.getPlayer());
+        if (gameUtils.isWinner(movePostDto, game)) {
+           game.setStatus(Status.FINISH);
+        } else {
+            game.setStatus(Status.STARTED);
+        }
 
         Move move = moveMapper.toEntity(movePostDto);
         move.setGame(game);
-        return moveMapper.fromEntity(moveRespository.save(move));
+        moveRespository.save(move);
+        return gameMapper.fromEntity(gameRepository.save(game));
     }
 
     private Game findGameEntity(UUID id) {

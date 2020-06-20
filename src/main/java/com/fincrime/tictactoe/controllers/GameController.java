@@ -30,9 +30,9 @@ public class GameController {
         return ResponseEntity.ok(gameService.listAll());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<GameGetDto> findGameById(@PathVariable UUID id) {
-        return ResponseEntity.ok(gameService.findGameById(id));
+    @GetMapping("/{gameId}")
+    public ResponseEntity<GameGetDto> findGameById(@PathVariable UUID gameId) {
+        return ResponseEntity.ok(gameService.findGameById(gameId));
     }
 
     @GetMapping("query")
@@ -40,9 +40,9 @@ public class GameController {
         return ResponseEntity.ok(gameService.findGameByName(gameName));
     }
 
-    @PostMapping("/moves")
-    public ResponseEntity<MoveGetDto> performMove(@RequestBody MovePostDto movePostDto) {
-        return ResponseEntity.ok(gameService.performMove(movePostDto));
+    @PostMapping("/{gameId}/moves")
+    public ResponseEntity<GameGetDto> performMove(@PathVariable UUID gameId, @RequestBody MovePostDto movePostDto) {
+        return ResponseEntity.ok(gameService.performMove(gameId, movePostDto));
     }
 
 }

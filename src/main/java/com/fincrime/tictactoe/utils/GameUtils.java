@@ -6,10 +6,7 @@ import com.fincrime.tictactoe.entities.Move;
 import com.fincrime.tictactoe.enums.Player;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -25,20 +22,26 @@ public class GameUtils {
 
     public boolean isWinner(MovePostDto movePostDto, Game game) {
         Set<Move> moveSet = game.getMoves();
-        List<Move> currentPlayerMoves = moveSet.stream().filter((move -> move.getPlayer() == movePostDto.getPlayer())).collect(Collectors.toList());
-        return false;
+        List<String> currentPlayerMoves = moveSet.stream()
+                .filter((move -> move.getPlayer() == movePostDto.getPlayer()))
+                .map(move -> move.getHorizontalAxis() + "" + move.getVerticalAxis())
+                .collect(Collectors.toList());
+        currentPlayerMoves.add(movePostDto.getHorizontalAxis() + "" + movePostDto.getVerticalAxis());
+        List<String[]> criteriaList = new ArrayList<>();
+        criteriaList.add(new String[]{"11", "21", "31"});
+        criteriaList.add(new String[]{"12", "22", "32"});
+        criteriaList.add(new String[]{"13", "23", "33"});
+        criteriaList.add(new String[]{"11", "12", "13"});
+        criteriaList.add(new String[]{"21", "22", "23"});
+        criteriaList.add(new String[]{"31", "32", "33"});
+        criteriaList.add(new String[]{"11", "22", "33"});
+        criteriaList.add(new String[]{"31", "22", "13"});
 
-    }
+        Optional<String[]> criteriaOption = criteriaList.stream().filter(criteria -> {
+            List<String> subCriteriaList = Arrays.asList(criteria);
+            return currentPlayerMoves.containsAll(subCriteriaList) ? true : false;
+        }).findFirst();
 
-    private boolean isHorizontalWinner(Set<Move> moveSet, List<Move> currentPlayerMoves) {
-        Map<String, Integer> map = countDuplicatedNumber(currentPlayerMoves.stream().map(move -> move.getHorizontalAxis()).collect(Collectors.toList()));
-        // TODO
-        return false;
-    }
-
-    private <T> Map<T, Integer> countDuplicatedNumber(List<T> inputList) {
-        Map<T, Integer> result = new HashMap<>();
-        inputList.forEach(e -> result.put(e, result.getOrDefault(e, 0) + 1));
-        return result;
+        return criteriaOption.isPresent();
     }
 }
