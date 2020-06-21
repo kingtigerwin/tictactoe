@@ -8,5 +8,6 @@ import lombok.RequiredArgsConstructor;
 public class TicTacToeErrorDto {
 
     private final int errorCode;
+
     private final String message;
 }

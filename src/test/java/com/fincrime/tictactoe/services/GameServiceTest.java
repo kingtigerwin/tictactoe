@@ -52,5 +52,9 @@ public class GameServiceTest {
         Assertions.assertEquals(returnedResult.getStatus(), expectedResult.getStatus());
     }
 
+    @Test
+    public void givenGameService_whenFindAllGames_thenOK() {
+
+    }
 
 }
