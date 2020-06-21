@@ -11,7 +11,7 @@ import com.fincrime.tictactoe.exceptions.BadRequestException;
 import com.fincrime.tictactoe.mappers.GameMapper;
 import com.fincrime.tictactoe.mappers.MoveMapper;
 import com.fincrime.tictactoe.repositories.GameRepository;
-import com.fincrime.tictactoe.repositories.MoveRespository;
+import com.fincrime.tictactoe.repositories.MoveRepository;
 import com.fincrime.tictactoe.utils.GameUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class GameService {
 
     private final GameRepository gameRepository;
-    private final MoveRespository moveRespository;
+    private final MoveRepository moveRepository;
     private final GameMapper gameMapper;
     private final MoveMapper moveMapper;
     private final GameUtils gameUtils;
@@ -77,7 +77,7 @@ public class GameService {
 
         Move move = moveMapper.toEntity(movePostDto);
         move.setGame(game);
-        moveRespository.save(move);
+        moveRepository.save(move);
         return gameMapper.fromEntity(gameRepository.save(game));
     }
 
