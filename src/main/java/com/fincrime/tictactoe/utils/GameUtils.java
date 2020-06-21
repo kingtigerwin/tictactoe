@@ -4,13 +4,19 @@ import com.fincrime.tictactoe.dtos.MovePostDto;
 import com.fincrime.tictactoe.entities.Game;
 import com.fincrime.tictactoe.entities.Move;
 import com.fincrime.tictactoe.constants.Player;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor
 public class GameUtils {
+
+    private final List<String[]> criteriaList;
+
     public boolean isMovePayloadValid(MovePostDto movePostDto) {
         return movePostDto.getHorizontalAxis() <= 3 && movePostDto.getVerticalAxis() <= 3;
     }
@@ -27,15 +33,7 @@ public class GameUtils {
                 .map(move -> move.getHorizontalAxis() + "" + move.getVerticalAxis())
                 .collect(Collectors.toList());
         currentPlayerMoves.add(movePostDto.getHorizontalAxis() + "" + movePostDto.getVerticalAxis());
-        List<String[]> criteriaList = new ArrayList<>();
-        criteriaList.add(new String[]{"11", "21", "31"});
-        criteriaList.add(new String[]{"12", "22", "32"});
-        criteriaList.add(new String[]{"13", "23", "33"});
-        criteriaList.add(new String[]{"11", "12", "13"});
-        criteriaList.add(new String[]{"21", "22", "23"});
-        criteriaList.add(new String[]{"31", "32", "33"});
-        criteriaList.add(new String[]{"11", "22", "33"});
-        criteriaList.add(new String[]{"31", "22", "13"});
+
 
         Optional<String[]> criteriaOption = criteriaList.stream().filter(criteria -> {
             List<String> subCriteriaList = Arrays.asList(criteria);
