@@ -26,14 +26,21 @@ public class GameUtils {
         return movePostDto.getPlayer() != lastPlayer;
     }
 
+    public boolean isDuplicatedAxis(MovePostDto movePostDto, Game game) {
+        List<String> currentTotalMoves = game.getMoves().stream()
+                .map(move -> move.getHorizontalAxis() + "" + move.getVerticalAxis())
+                .collect(Collectors.toList());
+        String currentMove = movePostDto.getHorizontalAxis() + "" + movePostDto.getVerticalAxis();
+        return currentTotalMoves.contains(currentMove);
+    }
+
     public boolean isWinner(MovePostDto movePostDto, Game game) {
-        Set<Move> moveSet = game.getMoves();
-        List<String> currentPlayerMoves = moveSet.stream()
+        List<String> currentPlayerMoves = game.getMoves().stream()
                 .filter((move -> move.getPlayer() == movePostDto.getPlayer()))
                 .map(move -> move.getHorizontalAxis() + "" + move.getVerticalAxis())
                 .collect(Collectors.toList());
-        currentPlayerMoves.add(movePostDto.getHorizontalAxis() + "" + movePostDto.getVerticalAxis());
 
+        currentPlayerMoves.add(movePostDto.getHorizontalAxis() + "" + movePostDto.getVerticalAxis());
 
         Optional<String[]> criteriaOption = criteriaList.stream().filter(criteria -> {
             List<String> subCriteriaList = Arrays.asList(criteria);

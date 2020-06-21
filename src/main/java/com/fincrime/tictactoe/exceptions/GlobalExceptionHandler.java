@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.ok(new TicTacToeErrorDto(404, ex.getMessage()));
     }
 
-    @ExceptionHandler(value = {BadRequestException.class})
+    @ExceptionHandler({BadRequestException.class})
     public ResponseEntity<TicTacToeErrorDto> handleBacRequestException(BadRequestException ex) {
         log.error("Invalid fields in request payload:", ex);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new TicTacToeErrorDto(400, ex.getMessage()));

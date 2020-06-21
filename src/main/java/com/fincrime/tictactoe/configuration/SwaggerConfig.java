@@ -28,13 +28,13 @@ public class SwaggerConfig {
 
     private ApiInfo getApiInfo() {
         return new ApiInfo(
-                "TITLE",
-                "DESCIPRION",
-                "VERSION",
-                "TERMS OF SERVICE URL",
-                new Contact("NAME","URL","EMAIL"),
-                "LICENSE",
-                "LICENSE URL",
+                "Tic Tac Toe finCrime App",
+                "This is SpringBoot based Tic Tac Toe application done by Tiger Qian",
+                "VERSION 1.0",
+                "http://localhost:8080/swagger-ui.html#/",
+                null,
+                "",
+                "",
                 Collections.emptyList()
         );
     }
