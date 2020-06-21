@@ -2,8 +2,8 @@ package com.fincrime.tictactoe.repositories;
 
 import com.fincrime.tictactoe.TictactoeApplication;
 import com.fincrime.tictactoe.entities.Game;
-import com.fincrime.tictactoe.enums.Player;
-import com.fincrime.tictactoe.enums.Status;
+import com.fincrime.tictactoe.constants.Player;
+import com.fincrime.tictactoe.constants.Status;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

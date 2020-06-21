@@ -1,10 +1,8 @@
 package com.fincrime.tictactoe.dtos;
 
-import com.fincrime.tictactoe.enums.Player;
+import com.fincrime.tictactoe.constants.Player;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
-import java.util.UUID;
 
 @Data
 public class MovePostDto {

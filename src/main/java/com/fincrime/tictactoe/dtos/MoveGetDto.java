@@ -1,6 +1,6 @@
 package com.fincrime.tictactoe.dtos;
 
-import com.fincrime.tictactoe.enums.Player;
+import com.fincrime.tictactoe.constants.Player;
 import lombok.Data;
 
 import java.util.UUID;

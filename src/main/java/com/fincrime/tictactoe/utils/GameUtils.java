@@ -3,7 +3,7 @@ package com.fincrime.tictactoe.utils;
 import com.fincrime.tictactoe.dtos.MovePostDto;
 import com.fincrime.tictactoe.entities.Game;
 import com.fincrime.tictactoe.entities.Move;
-import com.fincrime.tictactoe.enums.Player;
+import com.fincrime.tictactoe.constants.Player;
 import org.springframework.stereotype.Component;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package com.fincrime.tictactoe.enums;
+package com.fincrime.tictactoe.constants;
 
 public enum Status {
     READY,

@@ -1,8 +1,7 @@
 package com.fincrime.tictactoe.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fincrime.tictactoe.enums.Player;
-import com.fincrime.tictactoe.enums.Status;
+import com.fincrime.tictactoe.constants.Player;
+import com.fincrime.tictactoe.constants.Status;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 

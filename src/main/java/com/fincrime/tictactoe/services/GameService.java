@@ -5,7 +5,7 @@ import com.fincrime.tictactoe.dtos.GamePostDto;
 import com.fincrime.tictactoe.dtos.MovePostDto;
 import com.fincrime.tictactoe.entities.Game;
 import com.fincrime.tictactoe.entities.Move;
-import com.fincrime.tictactoe.enums.Status;
+import com.fincrime.tictactoe.constants.Status;
 import com.fincrime.tictactoe.exceptions.GameNotFoundException;
 import com.fincrime.tictactoe.exceptions.BadRequestException;
 import com.fincrime.tictactoe.mappers.GameMapper;
@@ -38,11 +38,23 @@ public class GameService {
         return gameMapper.fromEntity(game);
     }
 
+    /**
+     * List all the Games which each game contains details such as game name, status etc.
+     *
+     * @return a list of game objects
+     */
     public List<GameGetDto> listAll() {
         List<Game> gameList = gameRepository.findAll();
         return gameList.stream().map(game -> gameMapper.fromEntity(game)).collect(Collectors.toList());
     }
 
+    /**
+     * Find a game by given game name. If there is no name, exception will be thrown which would be captured
+     * globally and return back as the a proper response json format.
+     *
+     * @param name  game name
+     * @return the GameGetDto containing game details.
+     */
     public GameGetDto findGameByName(String name) {
         Game game = gameRepository.findByName(name);
         if (game == null) {
@@ -70,7 +82,7 @@ public class GameService {
         }
         game.setLastPlayer(movePostDto.getPlayer());
         if (gameUtils.isWinner(movePostDto, game)) {
-           game.setStatus(Status.FINISH);
+            game.setStatus(Status.FINISH);
         } else {
             game.setStatus(Status.STARTED);
         }

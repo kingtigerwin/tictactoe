@@ -1,6 +1,6 @@
 package com.fincrime.tictactoe.entities;
 
-import com.fincrime.tictactoe.enums.Player;
+import com.fincrime.tictactoe.constants.Player;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
