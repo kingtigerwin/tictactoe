@@ -13,7 +13,7 @@
 * Swagger
 
 ## Topics
-1. [How to run this application] (#How to run this application)
+1. [How to run this application](#How to run this application)
 
 ### This is the springBoot based RESTful API. It supports the below functions:
 
