@@ -53,11 +53,12 @@ http://localhost:8080/swagger-ui.html
 * Navigate the the root folder /tictactoe under the command line
 * rename **application.properties** to another name e.g. **application_backup.properties**
 * rename **application-mysql.properties** to **application.properties**
-* run command to **docker-compose up**
-* run the below gradle command to build the whole project: **gradle clean build**
+* run the command to **docker-compose up**
+* run the command to build the whole project: **gradle clean build**
 * when the above step is done, run the command **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar**
 
 ## Advantages of this application
+* Integrated with swagger doc which easily provides with the RESTful API UI and can be easily shared with other developers to use use API
 * Hibernate builds the entity layer to connect MySQL database server
 * Spring Data JPA builds the repository layer (DAO) & H2 in-mem database used as Unit Test to test this layer
 * Mapstruct used to map data between entities and dtos
