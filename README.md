@@ -12,7 +12,9 @@
 * MockMvc
 * Swagger
 
-## Introduction
+## Topics
+1. [How to run this application] (#How to run this application)
+
 ### This is the springBoot based RESTful API. It supports the below functions:
 
 * Create a new game
@@ -27,8 +29,6 @@
 * run the below gradle command to build the whole project: **gradle clean build**
 * run the below gradle command to start the spring boot application: **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar**
 
-### Note that the application by default is using h2 so that you can easily play with that
-
 ## How to access the spring boot restful application
 ### You may access swagger doc by accessing below url once application is up and running
 http://localhost:8080/swagger-ui.html
@@ -37,7 +37,7 @@ http://localhost:8080/swagger-ui.html
 <img src=".github/swagger-summary.png" width="400" height="300"/>
 
 #### When you expend game controller, there are all the controller list displayed as below:
-<img src=".github/gameController.png" width="400" height="330"/>
+<img src=".github/gameController.png" width="400" height="300"/>
 
 #### When clicking any endpoint, for instance createGame, it will show the details and you can hit it to get the response. Just like the below screenshot.
 <img src=".github/createGameEndpoint.png" width="400" height="500"/>
