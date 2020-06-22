@@ -45,7 +45,7 @@ http://localhost:8080/swagger-ui.html
 <img src=".github/swagger-summary.png" width="600" height="400"/>
 
 #### When you expend game controller, there are all the controller list displayed as below:
-<img src=".github/swagger-summary.png" width="600" height="450"/>
+<img src=".github/gameController.png" width="600" height="450"/>
 
 
 
