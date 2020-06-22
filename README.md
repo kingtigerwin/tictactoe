@@ -2,12 +2,14 @@
 #Tic Tac Toe application
 ##Tech Stack:
 * SpringBoot
+* Docker
 * MySQL
 * Lombok
 * Mapstruct
 * Spring Data JPA
 * H2 in-memory DB
 * Mockito
+* MockMvc
 * Swagger
 
 ## Introduction
@@ -22,23 +24,25 @@
 ## How to run this application
 
 * Navigate the the root folder /tictactoe under the command line
-* Install Mysql server or simply use docker version, create a database named "tictactoe"
 * run the below gradle command to build the whole project: **gradle clean build**
-* run the below gradle command to start the spring boot application: **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar **
+* run the below gradle command to start the spring boot application: **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar**
+
+## This application by default is using h2. I also prepared MySQL version. Please follow below steps if you want to try MySQL version
+
+* Navigate the the root folder /tictactoe under the command line
+* rename application.properties to another name e.g. application_backup.properties
+* rename application-mysql.properties to application.properties
+* run command to docker-compose up
+* run the below gradle command to build the whole project: **gradle clean build**
+* when the above step is done, run the command **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar**
 
 
 ## How to access the spring boot restful application
+### You may access swagger doc by accessing below url once application is up and running
+http://localhost:8080/swagger-ui.html
+<img src=".github/swagger-summary.png"/>
 * You may use postman to access the endpoint
-The endpoint providing the calculation function is exposed. The details is as follows:<br>
-URL: /calculation<br>
-METHOD: POST<br>
-PAYLOAD:  {
-          	"operand1":4.7,
-          	"operation":"+",
-          	"operand2":2
-          }<br>
-ContentType: application/json<br>
-Accept: application/json<br>
+
 
 
 ## Advantages of this application
