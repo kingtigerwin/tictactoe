@@ -1,6 +1,6 @@
 
-#Tic Tac Toe application
-##Tech Stack:
+# Tic Tac Toe application
+## Tech Stack:
 * SpringBoot
 * Docker
 * MySQL
@@ -42,10 +42,10 @@
 http://localhost:8080/swagger-ui.html
 
 #### This is swagger summary screen
-<img src=".github/swagger-summary.png" width="600" height="400"/>
+<img src=".github/swagger-summary.png" width="500" height="400"/>
 
 #### When you expend game controller, there are all the controller list displayed as below:
-<img src=".github/gameController.png" width="600" height="450"/>
+<img src=".github/gameController.png" width="500" height="400"/>
 
 
 
