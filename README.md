@@ -47,9 +47,9 @@ http://localhost:8080/swagger-ui.html
 
 ## I also prepared MySQL version. Please follow below steps if you want to try MySQL version
 * Navigate the the root folder /tictactoe under the command line
-* rename application.properties to another name e.g. application_backup.properties
-* rename application-mysql.properties to application.properties
-* run command to docker-compose up
+* rename **application.properties** to another name e.g. **application_backup.properties**
+* rename **application-mysql.properties** to **application.properties**
+* run command to **docker-compose up**
 * run the below gradle command to build the whole project: **gradle clean build**
 * when the above step is done, run the command **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar**
 
