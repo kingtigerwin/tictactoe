@@ -1,5 +1,6 @@
 package com.fincrime.tictactoe.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,5 +22,10 @@ public class CommonConfig {
         criteriaList.add(new String[]{"11", "22", "33"});
         criteriaList.add(new String[]{"31", "22", "13"});
         return criteriaList;
+    }
+
+    @Bean
+    public ObjectMapper getObjectMapper() {
+        return new ObjectMapper();
     }
 }

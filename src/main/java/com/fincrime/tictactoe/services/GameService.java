@@ -59,7 +59,7 @@ public class GameService {
         if (game == null) {
             throw new GameNotFoundException("Game not found");
         }
-        return gameMapper.fromEntity(gameRepository.findByName(name));
+        return gameMapper.fromEntity(game);
     }
 
     /**
@@ -105,6 +105,15 @@ public class GameService {
         if (gameUtils.isDuplicatedAxis(movePostDto, game)) {
             throw new BadRequestException("This axis already exists");
         }
+        updateStatusAndLastPlayerInGame(movePostDto, game);
+
+        Move move = moveMapper.toEntity(movePostDto);
+        move.setGame(game);
+        moveRepository.save(move);
+        return gameMapper.fromEntity(gameRepository.save(game));
+    }
+
+    private void updateStatusAndLastPlayerInGame(MovePostDto movePostDto, Game game) {
         game.setLastPlayer(movePostDto.getPlayer());
         if (gameUtils.isWinner(movePostDto, game)) {
             game.setStatus(Status.FINISH);
@@ -115,11 +124,6 @@ public class GameService {
             }
             game.setStatus(Status.STARTED);
         }
-
-        Move move = moveMapper.toEntity(movePostDto);
-        move.setGame(game);
-        moveRepository.save(move);
-        return gameMapper.fromEntity(gameRepository.save(game));
     }
 
     private Game findGameEntity(UUID id) {
