@@ -29,8 +29,8 @@
 ## How to run this application
 
 * Navigate the the root folder /tictactoe under the command line
-* run the below gradle command to build the whole project: **gradle clean build**
-* run the below gradle command to start the spring boot application: **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar**
+* run the command to build the whole project: **gradle clean build**
+* run the command to start the application: **java -jar ./build/libs/tictactoe-0.0.1-SNAPSHOT.jar**
 
 ## How to access the spring boot restful application
 ### You may access swagger doc by accessing below url once application is up and running
