@@ -40,7 +40,7 @@
 ## How to access the spring boot restful application
 ### You may access swagger doc by accessing below url once application is up and running
 http://localhost:8080/swagger-ui.html
-<img src=".github/swagger-summary.png" width="600" height="400"/>
+<img src=".github/swagger-summary.png" width="300" height="200"/>
 * You may use postman to access the endpoint
 
 
