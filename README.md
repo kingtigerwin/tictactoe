@@ -41,11 +41,14 @@
 ### You may access swagger doc by accessing below url once application is up and running
 http://localhost:8080/swagger-ui.html
 
-#### This is swagger summary screen
+#### This is swagger summary screenshot
 <img src=".github/swagger-summary.png" width="500" height="400"/>
 
 #### When you expend game controller, there are all the controller list displayed as below:
-<img src=".github/gameController.png" width="500" height="400"/>
+<img src=".github/gameController.png" width="500" height="330"/>
+
+#### When click any endpoint, for instance createGame, it will show the details and you can hit it to get the response
+<img src=".github/createGameEndpoint.png" width="400" height="600"/>
 
 
 
