@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk11
+    commands:
+      - printenv
+      - echo "installing something"
+  build:
+    commands:
+      - java -version
+      - ./gradlew build
+      - cp -r scripts build/libs
+      - cp appspec.yml build/libs
+artifacts:
+  files:
+    - 'tictactoe-0.0.1-SNAPSHOT.jar'
+    - 'scripts/*'
+    - 'appspec.yml'
+  base-directory: 'build/libs'
